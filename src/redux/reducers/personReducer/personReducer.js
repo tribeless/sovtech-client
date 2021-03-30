@@ -1,7 +1,9 @@
 import * as actionTypes from "../../actions/actionTypes";
 
 const initialState = {
-    personReducer:{}
+    personReducer:{},
+    viewTraits:{},
+    clickIndex:0
 }
 
 export const personReducer = (state=initialState,action)=>{
@@ -11,7 +13,19 @@ export const personReducer = (state=initialState,action)=>{
                 ...state,
                 personReducer:action.payload
             }
+
+        case actionTypes.VIEW_TRAITS:
+            return {
+                ...state,
+                viewTraits:action.payload
+            }
         
+        case actionTypes.CLICK_INDEX:
+            return {
+                ...state,
+                clickIndex:action.payload
+            }
+
         default:
             return state;
     }
