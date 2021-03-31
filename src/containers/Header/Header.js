@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from '@material-ui/core/styles';
-import {SButton} from "../../components/Button";
 import {STypography} from "../../components/Typography";
 import {Input} from "../../components/Input";
 import PERSON_QUERY from "../../graphql/queries/personQuery";
