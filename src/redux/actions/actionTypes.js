@@ -7,3 +7,4 @@ export const CLICK_INDEX = "CLICK_INDEX";
 export const INCREMENT_FILM = "INCREMENT_FILM";
 export const DECREMENT_FILM = "DECREMENT_FILM";
 export const CLEAR = "CLEAR";
+export const ERRORS = "ERRORS";

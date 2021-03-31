@@ -25,11 +25,18 @@ const clear = ()=>({
     type:actionTypes.CLEAR
 });
 
+const errors =(message,open)=>({
+    type:actionTypes.ERRORS,
+    message,
+    open
+});
+
 export {
     decrementFilm,
     incrementFilm,
     pageAction,
     increment,
     decrement,
-    clear
+    clear,
+    errors
 };

@@ -42,3 +42,12 @@ input[type="text"]{
 .movies{
     margin-top:20px;
 }
+.top-btn{
+    text-align:center;
+    color:black;
+    padding:.7rem;
+    background-color:white;
+    text-transform: uppercase;
+    border:none;
+    border-radius:3px;
+}

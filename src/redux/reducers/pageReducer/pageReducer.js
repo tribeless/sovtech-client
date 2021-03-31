@@ -3,7 +3,9 @@ import * as actionTypes from "../../actions/actionTypes";
 const initialState = {
     current:1,
     currentFilm:0,
-    pageReducer:[]
+    pageReducer:[],
+    message:"",
+    open:false
 }
 
 export const pageReducer = (state=initialState,action)=>{
@@ -43,6 +45,14 @@ export const pageReducer = (state=initialState,action)=>{
                 ...state,
                 currentFilm:0
             }
+
+        case actionTypes.ERRORS:
+            return {
+                ...state,
+                message:action.message,
+                open:action.open
+            }
+
         default:
             return state;
     }

@@ -11,8 +11,9 @@ import {Input} from "../../components/Input";
 import PERSON_QUERY from "../../graphql/queries/personQuery";
 import client from "../../apollo/client";
 import {viewTraitsAction} from "../../redux/actions/personAction/personAction";
-import {clear} from "../../redux/actions/pageAction/pageAction";
+import {clear,errors} from "../../redux/actions/pageAction/pageAction";
 import "../../index.css";
+import graphQlErrors from "../../components/errors";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -71,7 +72,7 @@ export const AppHeader = ()=>{
                                         }
                                     }
                                     catch(e){
-                                        console.log(e);
+                                        dispatch(errors(graphQlErrors(e),true));
                                     }
                                 }}
                             >
@@ -87,14 +88,10 @@ export const AppHeader = ()=>{
                                             }}
                                         />
 
-                                        <SButton
-                                            textVariant="button"
-                                            text="Submit"
-                                            size="small"
-                                            variant="contained"
-                                            textClassName="top_color"
+                                        <button
+                                            className="top-btn"
                                             type="submit"
-                                        />
+                                        >Submit</button>
                                     </FormikForm>
                                 )}
                             </Formik>

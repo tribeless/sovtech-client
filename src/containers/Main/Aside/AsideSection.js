@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme)=>({
 
  const AsideSection = ()=>{
     const data = useSelector(state=>state.pageReducer.pageReducer);
+    const page = useSelector(state=>state.pageReducer.current);
     const classes = useStyles();
     const dispatch = useDispatch();
     const handleClick = (data,index) =>{
@@ -69,18 +70,19 @@ const useStyles = makeStyles((theme)=>({
                 justify="space-between"
                 alignItems="flex-start"
                 >
+                    <p style={{fontSize:"1.2rem"}}>{`Page ${page}`}</p>
                 {
                     (data && data != null) && data.map((item,index)=>(
-                    <Grid onClick={()=>handleClick(item,index)} key={shortid.generate()} item xs={12} className={classes.content} >
-                        <div className={classes.bottomContent}>
-                            <span className={classes.para}>{item.name.toUpperCase()}</span>
-                            <span className={classes.para2}>{item.gender}</span>
-                        </div>
-                        <div style={{marginBottom:"16px"}} className={classes.bottomContent}>
-                        <span className={classes.span}>{`Height:${item.height}meters`}</span>
-                        <span className={classes.span}>{`Mass:${convertMass(item.mass)}kg`}</span>
-                        </div>
-                    </Grid>
+                        <Grid onClick={()=>handleClick(item,index)} key={shortid.generate()} item xs={12} className={classes.content} >
+                            <div className={classes.bottomContent}>
+                                <span className={classes.para}>{item.name.toUpperCase()}</span>
+                                <span className={classes.para2}>{item.gender}</span>
+                            </div>
+                            <div style={{marginBottom:"16px"}} className={classes.bottomContent}>
+                            <span className={classes.span}>{`Height:${item.height}meters`}</span>
+                            <span className={classes.span}>{`Mass:${convertMass(item.mass)}kg`}</span>
+                            </div>
+                        </Grid>
                     ))
                 }
                 <Navigation classes={classes} />        

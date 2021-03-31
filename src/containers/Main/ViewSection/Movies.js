@@ -2,11 +2,13 @@ import React from "react";
 import {
     makeStyles
 } from "@material-ui/core/styles";
-import {useSelector} from "react-redux";
+import {useSelector,useDispatch} from "react-redux";
 import Redo from "../../../components/RecurringTraits";
 import FILMS_QUERY from "../../../graphql/queries/filmsQuery";
 import client from "../../../apollo/client";
 import Navigation from "./Navigation";
+import graphQlErrors from "../../../components/errors";
+import {errors} from "../../../redux/actions/pageAction/pageAction";
 
 const useStyles = makeStyles((theme) => ({
     initial: {
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Movies = ()=>{
     const classes = useStyles();
+    const dispatch = useDispatch();
     const current = useSelector(state=>state.pageReducer.currentFilm);
     const data = useSelector(state=>state.personReducer.viewTraits);
     const [films,setFilms] = React.useState({})
@@ -57,9 +60,14 @@ const Movies = ()=>{
             url:data.films[current]
         }
         async function fetchFilms(){
-            const response = await client.request(FILMS_QUERY,variables);
-            if(response){
-                setFilms(response.films);
+            try{
+                const response = await client.request(FILMS_QUERY,variables);
+                if(response){
+                    setFilms(response.films);
+                }
+            }
+            catch(e){
+                dispatch(errors(graphQlErrors(e),true));
             }
         }
         fetchFilms();
