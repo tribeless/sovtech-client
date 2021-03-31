@@ -10,7 +10,33 @@ const increment = ()=>({
 });
 
 const decrement = ()=>({
-    type:actionTypes.decrement
+    type:actionTypes.DECREMENT
 });
 
-export {pageAction,increment,decrement};
+const incrementFilm = ()=>({
+    type:actionTypes.INCREMENT_FILM
+});
+
+const decrementFilm = ()=>({
+    type:actionTypes.DECREMENT_FILM
+});
+
+const clear = ()=>({
+    type:actionTypes.CLEAR
+});
+
+const errors =(message,open)=>({
+    type:actionTypes.ERRORS,
+    message,
+    open
+});
+
+export {
+    decrementFilm,
+    incrementFilm,
+    pageAction,
+    increment,
+    decrement,
+    clear,
+    errors
+};

@@ -5,11 +5,16 @@ const PAGE_QUERY = gql `
         page(page: $page) {
             next
             results {
-                name
-                height
-                gender
-                mass
-                homeworld
+            name
+            height
+            gender
+            mass
+            homeworld
+            films
+            hair_color
+            skin_color
+            eye_color
+            birth_year
             }
         }
     }
