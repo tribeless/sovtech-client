@@ -71,7 +71,7 @@ const Movies = ()=>{
             }
         }
         fetchFilms();
-    },[data])//react-hooks/exhaustive-deps
+    },[data,current])
     
     return (
         <div className={classes.parent}>
